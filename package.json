@@ -12,7 +12,7 @@
         "url": "(https://github.com/lerhhl/textfield-validation)"
     },
     "dependencies": {
-        "typescript": "next"
+        "typescript": "^3.4.0-dev.20190330"
     },
     "keywords": [
         "validation",
