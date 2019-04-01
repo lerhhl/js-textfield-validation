@@ -9,8 +9,13 @@ Validation.prototype.noSpace = function() {
   return this;
 };
 
-Validation.prototype.wordOnly = function() {
+Validation.prototype.removeNum = function() {
   this.value = this.value.replace(/\d/, "");
+  return this;
+};
+
+Validation.prototype.wordOnly = function() {
+  this.value = this.value.replace(/[^a-zA-Z]/, "");
   return this;
 };
 
