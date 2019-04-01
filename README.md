@@ -2,6 +2,12 @@
 
 An npm Package to validate textfield value.
 
+## How to install
+```bash
+# with npm
+npm install js-textfield-validation
+```
+
 ## API
 
 Some validations are chainable.
@@ -25,15 +31,15 @@ Some validations are chainable.
 Simple example:
 
 ```ReactJS
-import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Validation `from` "textfield-validation";
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import Validation from "js-textfield-validation";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      name: "",
     };
   };
 
@@ -46,10 +52,10 @@ class App extends Component {
     return (
       <div>
         <TextField
-          id='name'
-          label='Name'
-          variant='outlined'
-          placeholder='Enter your name here.'
+          id="name"
+          label"Name"
+          variant="outlined"
+          placeholder="Enter your name here."
           value={ this.state.name }
           onChange={ this.handleChange }
         />
@@ -61,4 +67,4 @@ class App extends Component {
 
 ## LICENSE
 
-MIT, see LICENSE.md
+LICENSE.md
