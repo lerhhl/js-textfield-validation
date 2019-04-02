@@ -28,9 +28,9 @@ Some validations are chainable.
 
 ## HOW TO USE
 
-Simple example:
+Simple example with ReactJS, material-ui and chainable methods:
 
-```ReactJS
+```JS
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import Validation from "js-textfield-validation";
