@@ -58,7 +58,7 @@ Validation.prototype.alphanumericOnly = function() {
 
 /** Accept number and dot only */
 Validation.prototype.ipAddress = function() {
-  this.value = this.value.replace(/([^0-9.])|(^[.])/, "").replace(/[.]{2}/, ".");
+  this.value = this.value.replace(/([^0-9.])|(^[.])/, "");
   return this;
 }
 
@@ -105,6 +105,17 @@ export const validateNRIC = nric => {
 
 /** Check whether IP address is in valid format */
 export const validateIPAddress = address => {
+  let isValid = true
   const regExpTest = RegExp("^\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}$");
-  return (regExpTest.test(address))
+  isValid = regExpTest.test(address)
+  if (isValid) {
+    const values = address.split('.')
+    for (let i=0; i<4; i++) {
+      if (values[i] > 255) {
+        isValid = false;
+        break;
+      }
+    }
+  }
+  return isValid
 }
