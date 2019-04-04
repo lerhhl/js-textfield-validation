@@ -57,7 +57,7 @@ Validation.prototype.alphanumericOnly = function() {
 };
 
 /** Accept number and dot only */
-Validations.prototype.ipAddress = function() {
+Validation.prototype.ipAddress = function() {
   this.value = this.value.replace(/([^0-9.])|(^[.])/, "").replace(/[.]{2}/, ".");
   return this;
 }
