@@ -1,6 +1,6 @@
 {
     "name": "js-textfield-validation",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "An npm Package to validate textfield value.",
     "main": "index.js",
     "types": "index.d.ts",

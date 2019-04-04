@@ -1,4 +1,4 @@
-var validation = require("../../src/index");
+var validation = require("../../src/non_chainable");
 
 describe("Non-chainable methods", function() {
   describe("validateEmail", function() {
