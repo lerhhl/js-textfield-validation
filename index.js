@@ -41,8 +41,7 @@ Validation.prototype.removeLeadingZero = function() {
 
 /** Create a value with two decimal places */
 Validation.prototype.dollarValue = function() {
-  this.value = this.value.replace(/\D/, "");
-  this.value = this.value.replace(/^0/, "");
+  this.value = this.value.replace(/(\D)|(^0)/, "");
   if (this.value.length === 0) {
     this.value = '0';
   } else if (this.value.length > 2) {
@@ -56,6 +55,12 @@ Validation.prototype.alphanumericOnly = function() {
   this.value = this.value.replace(/[^a-zA-Z0-9]/, "");
   return this;
 };
+
+/** Accept number and dot only */
+Validations.prototype.ipAddress = function() {
+  this.value = this.value.replace(/([^0-9.])|(^[.])/, "").replace(/[.]{2}/, ".");
+  return this;
+}
 
 /** Check whether value is a valid email format */
 export const validateEmail = email => {
@@ -96,4 +101,10 @@ export const validateNRIC = nric => {
   else if (icArray[0] === "F" || icArray[0] === "G") { theAlpha = fg[temp]; }
 
   return (icArray[8] === theAlpha);
+}
+
+/** Check whether IP address is in valid format */
+export const validateIPAddress = address => {
+  const regExpTest = RegExp("^\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}$");
+  return (regExpTest.test(address))
 }

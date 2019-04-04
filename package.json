@@ -1,6 +1,6 @@
 {
     "name": "js-textfield-validation",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "An npm Package to validate textfield value.",
     "main": "index.js",
     "types": "index.d.ts",
@@ -24,7 +24,8 @@
         "email",
         "email-validation",
         "price",
-        "price-validation"
+        "price-validation",
+        "ip address"
     ],
     "author": "Lerh Hwee Lern",
     "license": "MIT"

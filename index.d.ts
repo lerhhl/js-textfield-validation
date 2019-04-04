@@ -1,13 +1,16 @@
 declare class Validation {
   constructor(value: string);
 
-  noSpace(): void;
-  removeNum(): void;
-  wordOnly(): void;
-  singleSpace(): void;
-  numOnly(): void;
-  removeLeadingZero(): void;
-  dollarValue(): void;
   alphanumericOnly(): void;
-  validateEmail(): void;
+  dollarValue(): void;
+  ipAddress(): void;
+  noSpace(): void;
+  numOnly(): void;
+  removeNum(): void;
+  removeLeadingZero(): void;
+  singleSpace(): void;
+  wordOnly(): void;
+  validateEmail(email: string): void;
+  validateIPAddress(address: string): void;
+  validateNRIC(nric: string): void;
 }

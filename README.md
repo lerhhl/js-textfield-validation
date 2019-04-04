@@ -19,9 +19,10 @@ There are chainable and non-chainable methods.
 | --- | --- | --- |
 |`alphanumericOnly` | To accept alphanumeric only. | `string` |
 |`dollarValue` | To create a value with two decimal places. | `string` |
+|`ipAddress` | To accept number and dot only. | `string` |
 |`noSpace` | To remove all the spaces. | `string` |
-|`removeNum` | To remove all the number. | `string` |
 |`numOnly` | To remove all the non integer. | `string` |
+|`removeNum` | To remove all the number. | `string` |
 |`removeLeadingZero` | To remove all the leading zero. | `string` |
 |`singleSpace` | To accept single space between two characters only. | `string` |
 |`wordOnly` | To remove all non alphabet. | `string` |
@@ -30,7 +31,8 @@ There are chainable and non-chainable methods.
 
 | Validation | Description | Response | Remark |
 | --- | --- | --- | --- |
-|`validateEmail` | To check whether value is an valid email format. | `boolean` | |
+|`validateEmail` | To check whether value is a valid email format. | `boolean` | |
+|`validateIPAddress` | To check whether value is a valid IP address. | `boolean` | |
 |`validateNRIC` | To check whether value is an valid NRIC in Singapore. | `boolean` | Based on http://www.samliew.com/icval/ |
 
 ## HOW TO USE
