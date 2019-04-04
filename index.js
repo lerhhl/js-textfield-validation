@@ -3,6 +3,7 @@ export default class Validation {
     this.value = value;
   };
 };
+
 /** Remove all the spaces */
 Validation.prototype.noSpace = function() {
   this.value = this.value.replace(/\s/, "");
@@ -105,9 +106,9 @@ export const validateNRIC = nric => {
 
 /** Check whether IP address is in valid format */
 export const validateIPAddress = address => {
-  let isValid = true
+  let isValid = true;
   const regExpTest = RegExp("^\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}$");
-  isValid = regExpTest.test(address)
+  isValid = regExpTest.test(address);
   if (isValid) {
     const values = address.split('.')
     for (let i=0; i<4; i++) {
@@ -117,5 +118,5 @@ export const validateIPAddress = address => {
       }
     }
   }
-  return isValid
+  return isValid;
 }
