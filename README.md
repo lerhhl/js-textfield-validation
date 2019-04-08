@@ -15,27 +15,40 @@ There are chainable and non-chainable methods.
 
 ### Available chainable validations
 
-| Validation | Description | Response |
-| --- | --- | --- |
-|`alphanumericOnly` | To accept alphanumeric only. | `string` |
-|`dollarValue` | To create a value with two decimal places. | `string` |
-|`ipAddress` | To accept number and dot only. | `string` |
-|`noSpace` | To remove all the spaces. | `string` |
-|`numOnly` | To remove all the non integer. | `string` |
-|`removeNum` | To remove all the number. | `string` |
-|`removeLeadingZero` | To remove all the leading zero. | `string` |
-|`singleSpace` | To accept single space between two characters only. | `string` |
-|`wordOnly` | To remove all non alphabet. | `string` |
+| Validation | Description | Input | Output |
+| --- | --- | --- | --- |
+|`alphanumericOnly` | To accept alphanumeric only. | `nil` | `string` |
+|`dollarValue` | To create a value with two decimal places. | `nil` | `string` |
+|`ipAddress` | To accept number and dot only. | `nil` | `string` |
+|`noSpace` | To remove all the spaces. | `nil` | `string` |
+|`numOnly` | To remove all the non integer. | `nil` | `string` |
+|`removeNum` | To remove all the number. | `nil` | `string` |
+|`removeLeadingZero` | To remove all the leading zero. | `nil` | `string` |
+|`singleSpace` | To accept single space between two characters only. | `nil` | `string` |
+|`truncate` | To truncate the value to a specifc length. | `integer` | `string` |
+|`wordOnly` | To remove all non alphabet. | `nil` | `string` |
 
 ### Available non-chainable validations
 
-| Validation | Description | Response | Remark |
-| --- | --- | --- | --- |
-|`validateEmail` | To check whether value is a valid email format. | `boolean` | |
-|`validateIPAddress` | To check whether value is a valid IP address. | `boolean` | |
-|`validateNRIC` | To check whether value is an valid NRIC in Singapore. | `boolean` | Based on http://www.samliew.com/icval/ |
+| Validation | Description | Input | Output | Remark |
+| --- | --- | --- | --- | --- |
+|`validateEmail` | To check whether value is a valid email format. | `nil` | `boolean` | |
+|`validateIPAddress` | To check whether value is a valid IP address. | `nil` | `boolean` | |
+|`validateNRIC` | To check whether value is an valid NRIC in Singapore. | `nil` | `boolean` | Based on http://www.samliew.com/icval/ |
 
 ## HOW TO USE
+
+### Include chainable methods
+
+```JS
+import Validation from "js-textfield-validation";
+```
+
+### Include non-chainable methods
+
+```JS
+import { validateEmail, validateIPAddress, validateNRIC } from "js-textfield-validation";
+```
 
 ### An example with ReactJS, material-ui and chainable methods
 
@@ -49,12 +62,17 @@ class App extends Component {
     super();
     this.state = {
       name: "",
+      error: "",
     };
   };
 
   handleChange = event => {
-    let validatedName = new Validations(event.target.value).removeNum().singleSpace().value;
-    this.setState({ name: validatedName });
+    let validatedName = new Validations(event.target.value).removeNum().singleSpace();
+    if (validatedName.error !== "") {
+      this.setState({ name: validatedName.value, error: validatedName.error });
+    } else {
+      this.setState({ name: validatedName, error: "" });
+    }
   };
 
   render() {
@@ -67,6 +85,7 @@ class App extends Component {
           placeholder="Enter your name here."
           value={ this.state.name }
           onChange={ this.handleChange }
+          helperText={ this.state.error }
         />
       </div>
     );
@@ -74,7 +93,7 @@ class App extends Component {
 };
 ```
 
-### An example with non-chainable method
+### An example with ReactJS, material-ui and chainable and non-chainable methods
 
 ```JS
 import React, { Component } from "react";

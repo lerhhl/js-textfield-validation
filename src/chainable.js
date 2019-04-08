@@ -38,3 +38,11 @@ exports.alphanumericOnly = function(value) {
 exports.ipAddress = function(value) {
   return value.replace(/([^0-9.])|(^[.]+)/, "");
 }
+
+exports.truncate = function(value, limit) {
+  if (value.length <= limit) {
+    return value
+  } else {
+    return value.slice(0, limit);
+  }
+}

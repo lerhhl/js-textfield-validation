@@ -1,65 +1,126 @@
 export default class Validation {
   constructor(value) {
     this.value = value;
+    this.error = "";
   };
 };
 
 /** Remove all the spaces */
 Validation.prototype.noSpace = function() {
-  this.value = this.value.replace(/\s/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/\s/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Remove all numbers */
 Validation.prototype.removeNum = function() {
-  this.value = this.value.replace(/\d/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/\d/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Remove all non alphabet */
 Validation.prototype.wordOnly = function() {
-  this.value = this.value.replace(/[^a-zA-Z]/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/[^a-zA-Z]/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Accept single space between two characters only */
 Validation.prototype.singleSpace = function() {
-  this.value = this.value.replace(/\s{2}/, " ");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/\s{2}/, " ");
+    this.error = "";
+  }
   return this;
 };
 
 /** Remove all the non integer */
 Validation.prototype.numOnly = function() {
-  this.value = this.value.replace(/\D/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/\D/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Remove leading zero */
 Validation.prototype.removeLeadingZero = function() {
-  this.value = this.value.replace(/^0/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/^0/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Create a value with two decimal places */
 Validation.prototype.dollarValue = function() {
-  this.value = this.value.replace(/(\D)|(^0)/, "");
-  if (this.value.length === 0) {
-    this.value = '0';
-  } else if (this.value.length > 2) {
-    this.value = this.value.slice(0, -2) + '.' + this.value.slice(-2);
-  };
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/(\D)|(^0)/, "");
+    this.error = "";
+    if (this.value.length === 0) {
+      this.value = '0';
+    } else if (this.value.length > 2) {
+      this.value = this.value.slice(0, -2) + '.' + this.value.slice(-2);
+    };
+  }
   return this;
 };
 
 /** Accept alphanumeric only */
 Validation.prototype.alphanumericOnly = function() {
-  this.value = this.value.replace(/[^a-zA-Z0-9]/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/[^a-zA-Z0-9]/, "");
+    this.error = "";
+  }
   return this;
 };
 
 /** Accept number and dot only */
 Validation.prototype.ipAddress = function() {
-  this.value = this.value.replace(/([^0-9.])|(^[.]+)/, "");
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else {
+    this.value = this.value.replace(/([^0-9.])|(^[.]+)/, "");
+    this.error = "";
+  }
+  return this;
+}
+
+/** Truncate the value to a specific length */
+Validation.prototype.truncate = function(limit) {
+  if (typeof this.value !== "string") {
+    this.error = "Only String input is allowed.";
+  } else if (typeof limit !== "number") {
+    this.error = "Only Number input for truncate is allowed.";
+  } else if (this.value.length <= limit) {
+    this.error = "";
+  } else {
+    this.value = this.value.slice(0, limit);
+    this.error = "";
+  }
   return this;
 }
 

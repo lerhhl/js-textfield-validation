@@ -99,4 +99,13 @@ describe("Chainable methods", function() {
       expect(Validation.ipAddress("1.1.1")).toEqual("1.1.1");
     })
   })
+
+  describe("truncate", function() {
+    it("truncate the value length", function() {
+      expect(Validation.truncate("aaa", 2)).toEqual("aa");
+      expect(Validation.truncate("aa", 2)).toEqual("aa");
+      expect(Validation.truncate("a", 2)).toEqual("a");
+      expect(Validation.truncate("", 2)).toEqual("");
+    })
+  })
 })
