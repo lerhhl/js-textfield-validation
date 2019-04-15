@@ -17,25 +17,25 @@ There are chainable and non-chainable methods.
 
 | Methods | Description |
 | --- | --- |
-|`alphanumericOnly()` | To accept alphanumeric only. |
-|`dollarValue()` | To create a value with two decimal places. |
-|`ipAddress()` | To accept number and dot only. |
-|`noSpace()` | To remove all the spaces. |
-|`numOnly()` | To remove all the non integer. |
-|`removeNum()` | To remove all the number. |
-|`removeLeadingZero()` | To remove all the leading zero. |
-|`singleSpace()` | To accept single space between two characters only. |
-|`truncate(length: integer)` | To truncate the value to a specifc length. |
-|`wordOnly()` | To remove all non alphabet. |
+| `alphanumericOnly()` | To accept alphanumeric only. |
+| `dollarValue()` | To create a value with two decimal places. |
+| `ipAddress()` | To accept number and dot only. |
+| `noSpace()` | To remove all the spaces. |
+| `numOnly()` | To remove all the non integer. |
+| `removeNum()` | To remove all the number. |
+| `removeLeadingZero()` | To remove all the leading zero. |
+| `singleSpace()` | To accept single space between two characters only. |
+| `truncate(length: integer)` | To truncate the value to a specifc length. |
+| `wordOnly()` | To remove all non alphabet. |
 
 ### Available non-chainable validations
 
 | Methods | Description | Output | Remark |
-| --- | --- | --- | --- | --- |
-|`validateAlphanumericOnly(value: string)` | To check whether the value contains alphanumberic only. | `boolean` | |
-|`validateEmail(email: string)` | To check whether value is a valid email format. | `boolean` | |
-|`validateNRIC(nric: string)` | To check whether value is an valid NRIC in Singapore. | `boolean` | [Source](http://www.samliew.com/icval/) |
-|`validateIPAddress(address: string)` | To check whether value is a valid IP address. | `boolean` | |
+| --- | --- | --- | --- |
+| `validateAlphanumericOnly(value: string)` | To check whether the value contains alphanumberic only. | `boolean` | nil |
+| `validateEmail(email: string)` | To check whether value is a valid email format. | `boolean` | nil |
+| `validateNRIC(nric: string)` | To check whether value is an valid NRIC in Singapore. | `boolean` | [Source](http://www.samliew.com/icval/) |
+| `validateIPAddress(address: string)` | To check whether value is a valid IP address. | `boolean` | nil |
 
 ## HOW TO USE
 
