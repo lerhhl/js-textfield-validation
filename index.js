@@ -181,3 +181,13 @@ export const validateIPAddress = address => {
   }
   return isValid;
 }
+
+/** Check whether the value contains alphanumberic only. */
+export const validateAlphanumericOnly = value => {
+  let isValid = false;
+  const regExpTest = /^[a-z0-9]+$/i;
+  if (regExpTest.test(value)) {
+    isValid = true;
+  }
+  return isValid;
+};

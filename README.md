@@ -32,9 +32,10 @@ There are chainable and non-chainable methods.
 
 | Methods | Description | Output | Remark |
 | --- | --- | --- | --- | --- |
-|`validateEmail()` | To check whether value is a valid email format. | `boolean` | |
-|`validateIPAddress()` | To check whether value is a valid IP address. | `boolean` | |
-|`validateNRIC()` | To check whether value is an valid NRIC in Singapore. | `boolean` | [Source](http://www.samliew.com/icval/) |
+|`validateAlphanumericOnly(value: string)` | To check whether the value contains alphanumberic only. | `boolean` | |
+|`validateEmail(email: string)` | To check whether value is a valid email format. | `boolean` | |
+|`validateNRIC(nric: string)` | To check whether value is an valid NRIC in Singapore. | `boolean` | [Source](http://www.samliew.com/icval/) |
+|`validateIPAddress(address: string)` | To check whether value is a valid IP address. | `boolean` | |
 
 ## HOW TO USE
 
