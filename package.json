@@ -3,16 +3,12 @@
     "version": "1.0.9",
     "description": "An npm Package to validate textfield value.",
     "main": "index.js",
-    "types": "index.d.ts",
     "scripts": {
-        "test": "jasmine"
+        "test": "mocha -w"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/lerhhl/js-textfield-validation"
-    },
-    "dependencies": {
-        "typescript": "^3.4.0-dev.20190330"
     },
     "keywords": [
         "validation",
@@ -32,6 +28,7 @@
     "author": "Lerh Hwee Lern",
     "license": "MIT",
     "devDependencies": {
-        "jasmine": "^3.4.0"
-    }
+        "mocha": "^6.2.0"
+    },
+    "dependencies": {}
 }
