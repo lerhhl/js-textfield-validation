@@ -1,131 +1,135 @@
-export default class Validation {
+class Validation {
   constructor(value) {
     this.value = value;
     this.error = "";
   };
+
+  /** Remove all the spaces */
+  noSpace() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/\s/, "");
+      this.error = "";
+    }
+    return this
+  };
+
+  /** Remove all numbers */
+  removeNum() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/\d/, "");
+      this.error = "";
+    }
+    return this
+  };
+
+  /** Remove all non alphabet */
+  wordOnly() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/[^a-zA-Z]/, "");
+      this.error = "";
+    }
+    return this;
+  };
+
+  /** Accept single space between two characters only */
+  singleSpace() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/\s{2}/, " ");
+      this.error = "";
+    }
+    return this;
+  };
+
+  /** Remove all the non integer */
+  numOnly() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/\D/, "");
+      this.error = "";
+    }
+    return this;
+  };
+
+  /** Remove leading zero */
+  removeLeadingZero() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/^0/, "");
+      this.error = "";
+    }
+    return this;
+  };
+
+  /** Create a value with two decimal places */
+  dollarValue() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/(\D)|(^0)/, "");
+      this.error = "";
+      if (this.value.length === 0) {
+        this.value = '0';
+      } else if (this.value.length === 1) {
+        this.value = "0.0" + this.value
+      } else if (this.value.length === 2) {
+        this.value = "0." + this.value
+      } else if (this.value.length > 2) {
+        this.value = this.value.slice(0, -2) + '.' + this.value.slice(-2);
+      };
+    }
+    return this;
+  };
+  
+  /** Accept alphanumeric only */
+  alphanumericOnly() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/[^a-zA-Z0-9]/, "");
+      this.error = "";
+    }
+    return this;
+  };
+  
+  /** Accept number and dot only */
+  ipAddress() {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else {
+      this.value = this.value.replace(/([^0-9.])|(^[.]+)/, "");
+      this.error = "";
+    }
+    return this;
+  }
+  
+  /** Truncate the value to a specific length */
+  truncate(limit) {
+    if (typeof this.value !== "string") {
+      this.error = "Only String input is allowed.";
+    } else if (typeof limit !== "number") {
+      this.error = "Only Number input for truncate is allowed.";
+    } else if (this.value.length <= limit) {
+      this.error = "";
+    } else {
+      this.value = this.value.slice(0, limit);
+      this.error = "";
+    }
+    return this;
+  }
 };
-
-/** Remove all the spaces */
-Validation.prototype.noSpace = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/\s/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Remove all numbers */
-Validation.prototype.removeNum = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/\d/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Remove all non alphabet */
-Validation.prototype.wordOnly = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/[^a-zA-Z]/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Accept single space between two characters only */
-Validation.prototype.singleSpace = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/\s{2}/, " ");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Remove all the non integer */
-Validation.prototype.numOnly = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/\D/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Remove leading zero */
-Validation.prototype.removeLeadingZero = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/^0/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Create a value with two decimal places */
-Validation.prototype.dollarValue = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/(\D)|(^0)/, "");
-    this.error = "";
-    if (this.value.length === 0) {
-      this.value = '0';
-    } else if (this.value.length > 2) {
-      this.value = this.value.slice(0, -2) + '.' + this.value.slice(-2);
-    };
-  }
-  return this;
-};
-
-/** Accept alphanumeric only */
-Validation.prototype.alphanumericOnly = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/[^a-zA-Z0-9]/, "");
-    this.error = "";
-  }
-  return this;
-};
-
-/** Accept number and dot only */
-Validation.prototype.ipAddress = function() {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else {
-    this.value = this.value.replace(/([^0-9.])|(^[.]+)/, "");
-    this.error = "";
-  }
-  return this;
-}
-
-/** Truncate the value to a specific length */
-Validation.prototype.truncate = function(limit) {
-  if (typeof this.value !== "string") {
-    this.error = "Only String input is allowed.";
-  } else if (typeof limit !== "number") {
-    this.error = "Only Number input for truncate is allowed.";
-  } else if (this.value.length <= limit) {
-    this.error = "";
-  } else {
-    this.value = this.value.slice(0, limit);
-    this.error = "";
-  }
-  return this;
-}
 
 /** Check whether value is a valid email format */
-export const validateEmail = email => {
+const validateEmail = email => {
   let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let valid = false;
   if (re.test(email)) valid = true;
@@ -133,7 +137,7 @@ export const validateEmail = email => {
 }
 
 /** Check whether the value is a valid NRIC in Singapore */
-export const validateNRIC = nric => {
+const validateNRIC = nric => {
   if (nric.length !== 9) return false;
 
   nric = nric.toUpperCase();
@@ -166,7 +170,7 @@ export const validateNRIC = nric => {
 }
 
 /** Check whether IP address is in valid format */
-export const validateIPAddress = address => {
+const validateIPAddress = address => {
   let isValid = true;
   const regExpTest = RegExp("^\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}[.]\\d{1,3}$");
   isValid = regExpTest.test(address);
@@ -183,7 +187,7 @@ export const validateIPAddress = address => {
 }
 
 /** Check whether the value contains alphanumberic only. */
-export const validateAlphanumericOnly = value => {
+const validateAlphanumericOnly = value => {
   let isValid = false;
   const regExpTest = /^[a-z0-9]+$/i;
   if (regExpTest.test(value)) {
@@ -191,3 +195,11 @@ export const validateAlphanumericOnly = value => {
   }
   return isValid;
 };
+
+module.exports = {
+  Validation,
+  validateEmail,
+  validateNRIC,
+  validateIPAddress,
+  validateAlphanumericOnly
+}
