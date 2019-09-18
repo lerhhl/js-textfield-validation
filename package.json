@@ -4,8 +4,8 @@
     "description": "An npm Package to validate textfield value.",
     "main": "index.js",
     "scripts": {
-        "test": "mocha -w",
-        "test-with-coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 90 --per-file mocha"
+        "test": "mocha -w --recursive ./src/**/*.js",
+        "test-with-coverage": "nyc --reporter=html --reporter=text --check-coverage --lines 90 --per-file mocha --recursive ./src/**/*.js"
     },
     "repository": {
         "type": "git",
