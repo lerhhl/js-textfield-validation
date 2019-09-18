@@ -1,12 +1,5 @@
 const Validation = require("./src/Validation");
-
-/** Check whether value is a valid email format */
-const validateEmail = email => {
-  let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  let valid = false;
-  if (re.test(email)) valid = true;
-  return valid;
-}
+const validateEmail = require("./src/validateEmail");
 
 /** Check whether the value is a valid NRIC in Singapore */
 const validateNRIC = nric => {
