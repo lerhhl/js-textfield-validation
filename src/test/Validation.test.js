@@ -13,6 +13,32 @@ describe("Validation", () => {
   });
 
   describe("noSpace", () => {
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).noSpace();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).noSpace();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).noSpace();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+    });
+
     describe("if a string parameter is given", () => {
       it("should remove space", () => {
         let text = new Validation("with space").noSpace();
@@ -20,73 +46,205 @@ describe("Validation", () => {
         assert.strictEqual(text.error, "");
       });
     });
+  });
 
-    describe("if a non string parameter is given", () => {
-      it("should have an error - Only String input is allowed.", () => {
-        let text = new Validation(123).noSpace();
-        assert.strictEqual(text.value, 123);
-        assert.strictEqual(text.error, "Only String input is allowed.");
+  describe("removeNum", () => {
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).removeNum();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).removeNum();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).removeNum();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+    });
+
+    describe("if string parameter is given to the class", () => {
+      it("should remove numbers", () => {
+        let text = new Validation("with number1!").removeNum();
+        assert.strictEqual(text.value, "with number!");
+        assert.strictEqual(text.error, "");
       });
     });
   });
 
-  describe("removeNum", () => {
-    it("should remove numbers", () => {
-      let text = new Validation("with number1!").removeNum();
-      assert.strictEqual(text.value, "with number!");
-      assert.strictEqual(text.error, "");
-    });
-  });
-
   describe("wordOnly", () => {
-    it("should remove space", () => {
-      let text = new Validation("remove space").wordOnly();
-      assert.strictEqual(text.value, "removespace");
-      assert.strictEqual(text.error, "");
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).wordOnly();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).wordOnly();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).wordOnly();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
     });
-    it("should remove number", () => {
-      let text = new Validation("removenum1").wordOnly();
-      assert.strictEqual(text.value, "removenum");
-      assert.strictEqual(text.error, "");
-    });
-    it("should remove special character", () => {
-      let text = new Validation("removespecialchar!").wordOnly();
-      assert.strictEqual(text.value, "removespecialchar");
-      assert.strictEqual(text.error, "");
+
+    describe("if string parameter is given to the class", () => {
+      it("should remove space", () => {
+        let text = new Validation("remove space").wordOnly();
+        assert.strictEqual(text.value, "removespace");
+        assert.strictEqual(text.error, "");
+      });
+      it("should remove number", () => {
+        let text = new Validation("removenum1").wordOnly();
+        assert.strictEqual(text.value, "removenum");
+        assert.strictEqual(text.error, "");
+      });
+      it("should remove special character", () => {
+        let text = new Validation("removespecialchar!").wordOnly();
+        assert.strictEqual(text.value, "removespecialchar");
+        assert.strictEqual(text.error, "");
+      });
     });
   });
 
   describe("singleSpace", () => {
-    it("should replace double space with single space", () => {
-      let text = new Validation("replace double  space").singleSpace();
-      assert.strictEqual(text.value, "replace double space");
-      assert.strictEqual(text.error, "");
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).singleSpace();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).singleSpace();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).singleSpace();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+    });
+
+    describe("if string parameter is given to the class", () => {
+      it("should replace double space with single space", () => {
+        let text = new Validation("replace double  space").singleSpace();
+        assert.strictEqual(text.value, "replace double space");
+        assert.strictEqual(text.error, "");
+      });
     });
   });
 
   describe("numOnly", () => {
-    it("should remove letter", () => {
-      let text = new Validation("123e").numOnly();
-      assert.strictEqual(text.value, "123");
-      assert.strictEqual(text.error, "");
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).numOnly();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).numOnly();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).numOnly();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
     });
-    it("should remove space", () => {
-      let text = new Validation("12 3").numOnly();
-      assert.strictEqual(text.value, "123");
-      assert.strictEqual(text.error, "");
-    });
-    it("should remove special character", () => {
-      let text = new Validation("123!").numOnly();
-      assert.strictEqual(text.value, "123");
-      assert.strictEqual(text.error, "");
+
+    describe("if string parameter is given to the class", () => {
+      it("should remove letter", () => {
+        let text = new Validation("123e").numOnly();
+        assert.strictEqual(text.value, "123");
+        assert.strictEqual(text.error, "");
+      });
+      it("should remove space", () => {
+        let text = new Validation("12 3").numOnly();
+        assert.strictEqual(text.value, "123");
+        assert.strictEqual(text.error, "");
+      });
+      it("should remove special character", () => {
+        let text = new Validation("123!").numOnly();
+        assert.strictEqual(text.value, "123");
+        assert.strictEqual(text.error, "");
+      });
     });
   });
 
   describe("removeLeadingZero", () => {
-    it("should remove leading zero", () => {
-      let text = new Validation("01230").removeLeadingZero();
-      assert.strictEqual(text.value, "1230");
-      assert.strictEqual(text.error, "");
+    describe("if non string parameter is given to the class", () => {
+      describe("given parameter is integer", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation(123).removeLeadingZero();
+          assert.strictEqual(text.value, 123);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an array", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation([]).removeLeadingZero();
+          assert.notStrictEqual(text.value, []);
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+
+      describe("given parameter is an object", () => {
+        it("should have error - 'Only String input is allowed.'", () => {
+          let text = new Validation({}).removeLeadingZero();
+          assert.notStrictEqual(text.value, {});
+          assert.strictEqual(text.error, "Only String input is allowed.");
+        });
+      });
+    });
+
+    describe("if string parameter is given to the class", () => {
+      it("should remove leading zero", () => {
+        let text = new Validation("01230").removeLeadingZero();
+        assert.strictEqual(text.value, "1230");
+        assert.strictEqual(text.error, "");
+      });
     });
   });
 

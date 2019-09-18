@@ -83,7 +83,7 @@ class Validation {
         this.value = "0.0" + this.value
       } else if (this.value.length === 2) {
         this.value = "0." + this.value
-      } else if (this.value.length > 2) {
+      } else {
         this.value = this.value.slice(0, -2) + '.' + this.value.slice(-2);
       };
     }
