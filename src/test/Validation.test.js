@@ -3,14 +3,47 @@ const Validation = require("../Validation");
 
 describe("Validation", () => {
   describe("create new instance", () => {
-    let text = new Validation("new instance");
-    it("should initialise with the parameter given", () => {
-      assert.strictEqual(text.value, "new instance");
+    describe("if null parameter is given", () => {
+      let text = new Validation(null);
+      it("should equal to an empty string", () => {
+        assert.strictEqual(text.value, "");
+      });
+      it("should have an empty error", () => {
+        assert.strictEqual(text.error, "");
+      });
     });
-    it("should have an empty error", () => {
-      assert.strictEqual(text.error, "");
+
+    describe("if no parameter is given", () => {
+      let text = new Validation();
+      it("should equal to an empty string", () => {
+        assert.strictEqual(text.value, "");
+      });
+      it("should have an empty error", () => {
+        assert.strictEqual(text.error, "");
+      });
+    });
+
+    describe("if undefined parameter is given", () => {
+      let text = new Validation(undefined);
+      it("should equal to an empty string", () => {
+        assert.strictEqual(text.value, "");
+      });
+      it("should have an empty error", () => {
+        assert.strictEqual(text.error, "");
+      });
+    });
+
+    describe("if string parameter is given", () => {
+      let text = new Validation("new instance");
+      it("should initialise with the parameter given", () => {
+        assert.strictEqual(text.value, "new instance");
+      });
+      it("should have an empty error", () => {
+        assert.strictEqual(text.error, "");
+      });
     });
   });
+
 
   describe("noSpace", () => {
     describe("if non string parameter is given to the class", () => {

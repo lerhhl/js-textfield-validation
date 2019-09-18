@@ -1,6 +1,6 @@
 class Validation {
-  constructor(value) {
-    this.value = value;
+  constructor(value="") {
+    this.value = value || "";
     this.error = "";
   };
 
