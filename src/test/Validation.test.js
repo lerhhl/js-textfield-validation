@@ -356,7 +356,7 @@ describe("Validation", () => {
       describe("given parameter is an array", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation([]).alphanumericOnly();
-          assert.notStrictEqual(text.value, []);
+          assert.deepStrictEqual(text.value, []);
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
@@ -364,7 +364,7 @@ describe("Validation", () => {
       describe("given parameter is an object", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation({}).alphanumericOnly();
-          assert.notStrictEqual(text.value, {});
+          assert.deepStrictEqual(text.value, {});
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
@@ -397,7 +397,7 @@ describe("Validation", () => {
       describe("given parameter is an array", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation([]).ipAddress();
-          assert.notStrictEqual(text.value, []);
+          assert.deepStrictEqual(text.value, []);
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
@@ -405,7 +405,7 @@ describe("Validation", () => {
       describe("given parameter is an object", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation({}).ipAddress();
-          assert.notStrictEqual(text.value, {});
+          assert.deepStrictEqual(text.value, {});
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
@@ -448,7 +448,7 @@ describe("Validation", () => {
       describe("given parameter is an array", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation([]).truncate(3);
-          assert.notStrictEqual(text.value, []);
+          assert.deepStrictEqual(text.value, []);
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
@@ -456,7 +456,7 @@ describe("Validation", () => {
       describe("given parameter is an object", () => {
         it("should have error - 'Only String input is allowed.'", () => {
           let text = new Validation({}).truncate(3);
-          assert.notStrictEqual(text.value, {});
+          assert.deepStrictEqual(text.value, {});
           assert.strictEqual(text.error, "Only String input is allowed.");
         });
       });
