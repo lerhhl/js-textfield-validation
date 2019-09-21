@@ -20,6 +20,7 @@ describe("validateEmail", () => {
         assert.strictEqual(validateEmail({}), false);
       });
     });
+
     describe("parameter is an undefined", () => {
       it("should be false", () => {
         assert.strictEqual(validateEmail(), false);
