@@ -1,5 +1,6 @@
 /** Check whether the value is a valid NRIC in Singapore */
 const validateNRIC = nric => {
+  if (typeof nric === "undefined" || nric === null) return false;
   if (nric.length !== 9) return false;
 
   nric = nric.toUpperCase();
@@ -33,7 +34,9 @@ const validateNRIC = nric => {
     theAlpha = st[temp];
   } else if (icArray[0] === "F" || icArray[0] === "G") {
     theAlpha = fg[temp];
-  };
+  } else {
+    return false;
+  }
 
   return (icArray[8] === theAlpha);
 }
